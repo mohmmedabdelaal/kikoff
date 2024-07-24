@@ -1,0 +1,35 @@
+/* styles/Teams.module.css */
+.container {
+  padding: 20px;
+}
+
+.mainContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.teamsList {
+  list-style: none;
+  padding: 0;
+}
+
+.teamItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.teamName {
+  font-size: 1.2em;
+  color: #028391;
+}
+
+.teamLeague {
+  font-size: 1em;
+  color: #666;
+}
+.teamsList a {
+  text-decoration: none;
+  font-size: 2rem;
+}

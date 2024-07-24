@@ -1,0 +1,30 @@
+/* styles/News.module.css */
+.container {
+    padding: 20px;
+  }
+  
+  .mainContent {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .newsList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .newsItem {
+    margin: 10px 0;
+  }
+  
+  .newsLink {
+    color: #028391;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s;
+  }
+  
+  .newsLink:hover {
+    color: #1e90ff; /* Change to a bright blue color on hover */
+  }
+  
