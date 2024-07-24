@@ -18,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} h-screen bg-gray-900`}>
-        <main className="h-full">
+        <main className="h-full relative">
           <Navbar />
-          <div className="flex h-full">{children}</div>
+          <section className="flex min-h-screen px-6 pb-6 pt-28 max-md:pb-14 sm:px-14">
+            <div className="mx-auto w-full max-w-5xl">{children}</div>
+          </section>
         </main>
       </body>
     </html>

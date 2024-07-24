@@ -6,7 +6,7 @@ import { title } from 'process';
 
 export default async function Home() {
   return (
-    <div id="page p-2">
+    <div id="p-2">
       <Link href="/livefootball">Live football today</Link>
       <NewsCard />
       <NewsCard />

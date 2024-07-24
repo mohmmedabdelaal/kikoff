@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const Navbar = () => {
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} fixed z-50 w-full gap-5 p-6`}>
       <div className={styles.logo}>
         <Link href="/">
           <Image
