@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import Image from 'next/image';
+import SearchBar from '../share/SearchBar';
 
 const Navbar = () => {
   return (
@@ -15,6 +16,9 @@ const Navbar = () => {
             height={100}
           />
         </Link>
+      </div>
+      <div>
+        <SearchBar />
       </div>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
