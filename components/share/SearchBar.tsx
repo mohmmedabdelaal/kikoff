@@ -36,7 +36,7 @@ const SearchBar = () => {
         width={200}
         height={200}
         className={`w-8 absolute right-2 transition-width duration-400 ease-in-out delay-1000 ${
-          isActive ? 'w-0' : 'w-8'
+          isActive ? 'w-0' : 'w-8 border-red-500'
         }`}
       />
     </div>

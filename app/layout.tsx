@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={`${inter.className} h-screen bg-gray-900`}>
         <main className="h-full relative">
           <Navbar />
-          <section className="flex border border-red-600 min-h-screen px-1 pb-1 pt-28 max-md:pb-14 sm:px-14">
+          <section className="flex border border-red-600 min-h-screen px-1 pb-1 pt-36 max-md:pb-14 sm:px-14">
             <div className=" w-full max-w-5xl">{children}</div>
           </section>
         </main>

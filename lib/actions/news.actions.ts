@@ -4,13 +4,14 @@ import News from '@/database/News.model';
 import { connectToDatabase } from '../db';
 import { revalidatePath } from 'next/cache';
 import mongoose from 'mongoose';
+import cloudinary from '../cloundinary';
 
 export interface CreateNewsParams {
   slug: string;
   image: string;
   content: string;
   title: string;
-  path?: string;
+  path: string;
 }
 
 export async function createNews(params: CreateNewsParams) {
@@ -19,8 +20,25 @@ export async function createNews(params: CreateNewsParams) {
     await connectToDatabase();
 
     const { slug, image, content, title, path } = params;
+    let cloudinaryResult;
+    if (image.startsWith('data:image')) {
+      // If image is a base64 string
+      cloudinaryResult = await cloudinary.uploader.upload(image, {
+        folder: 'news', // Optional: specify a folder in your Cloudinary account
+      });
+    } else {
+      // If image is a file path
+      cloudinaryResult = await cloudinary.uploader.upload(image, {
+        folder: 'news',
+      });
+    }
 
-    const newNews = await News.create({ slug, image, content, title });
+    const newNews = await News.create({
+      slug,
+      image: cloudinaryResult.secure_url,
+      content,
+      title,
+    });
 
     revalidatePath(path);
   } catch (error) {
