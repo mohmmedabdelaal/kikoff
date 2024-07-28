@@ -1,13 +1,11 @@
-import { newsData } from '@/lib/data';
 import Link from 'next/link';
 import styles from './page.module.css';
-import { createNews, getNews } from '@/lib/actions/news.actions';
+import { getNews } from '@/lib/actions/news.actions';
 import Image from 'next/image';
 import NewsForm from '@/components/form/NewsForm';
 
 const page = async () => {
   const { news } = await getNews({});
-  console.log(news);
   return (
     <div className={styles.container}>
       <main className={styles.mainContent}>

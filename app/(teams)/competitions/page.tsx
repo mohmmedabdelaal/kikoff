@@ -1,9 +1,11 @@
+import Fixture from '@/components/share/Fixture';
 import React from 'react';
 
 const page = () => {
   return (
-    <div>
+    <div className="border border-red-900 w-full">
       <h1>Premier League is here</h1>
+      <Fixture />
     </div>
   );
 };
