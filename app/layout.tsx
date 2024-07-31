@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../styles/globals.css';
 import Navbar from '@/components/navbar/Navbar';
+import Hero from '@/components/Hero';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +21,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="h-full relative">
           <Navbar />
-          <section className="flex border border-red-600 min-h-screen px-1 pb-1 pt-36 max-md:pb-14 sm:px-14">
+          <Hero />
+          <section className="flex border min-h-screen px-1 pb-1 pt-36 max-md:pb-14 sm:px-14">
             <div className=" w-full max-w-5xl">{children}</div>
           </section>
         </main>

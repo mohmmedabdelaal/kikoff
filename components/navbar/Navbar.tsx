@@ -25,9 +25,6 @@ const Navbar = () => {
           <Link href="/news">News</Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/latest">Latest</Link>
-        </li>
-        <li className={styles.navItem}>
           <Link href="/competitions">Competitions</Link>
         </li>
         <li className={styles.navItem}>

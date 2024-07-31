@@ -4,7 +4,7 @@ import ScoreBoard from '../share/ScoreBoard';
 
 const ScoreCard = () => {
   return (
-    <div className="max-w rounded w-[1200px] bg-slate-800 overflow-hidden shadow-sm">
+    <div className="max-w rounded bg-slate-800 overflow-hidden shadow-sm col-span-2">
       <Image
         width={400}
         height={400}
@@ -13,7 +13,13 @@ const ScoreCard = () => {
         alt="Sunset in the mountains"
       />
       <div>
-        <ScoreBoard />
+        <ScoreBoard
+          matchType="friendly"
+          t1Name="barcelona"
+          t2Name="real madrid"
+          t1Logo="/images/bar.png"
+          t2Logo="/images/real.png"
+        />
       </div>
     </div>
   );

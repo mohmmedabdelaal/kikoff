@@ -1,41 +1,53 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import Tags from './Tags';
 
-const ScoreBoard = () => {
+interface Props {
+  matchType: string;
+  t1Logo: string;
+  t2Logo: string;
+  t1Name: string;
+  t2Name: string;
+}
+
+const ScoreBoard = ({ matchType, t1Logo, t2Logo, t1Name, t2Name }: Props) => {
   return (
-    <Link href="/news" className="flex flex-col w-full text-light-900 p-1">
-      <div className="flex border-b-[16px] border-blue-900 my-8 ">
-        <h1 className="h1-bold text-dark100_light900 text-center pb-4">
-          Match Type
-        </h1>
+    <Link href="/news" className="flex flex-col  w-full text-light-900">
+      <div className="p-2">
+        <Tags />
+      </div>
+      <div className="flex items-center justify-center my-8 ">
+        <h1 className="h1-bold text-slate-200 pb-4">{matchType}</h1>
       </div>
 
-      <div className="bg-gray-800 font-sans text-white p-0 m-0 flex justify-evenly items-center p-6 bg-gray-700">
+      <div className="bg-gray-700 hover:bg-gray-800 w-full font-sans text-white flex justify-evenly items-center p-6">
         <div className="flex flex-col items-center">
-          <div>ARGENTINA U23</div>
           <Image
-            src="/images/Brazil’s.jpeg"
+            src={t1Logo}
             width={400}
             height={400}
             alt="Argentina Logo"
-            className="w-12 h-12"
+            className="w-20 h-20 mb-2
+            "
           />
+          <div>{t1Name}</div>
         </div>
+
         <div className="text-center">
           <div>Summer Olympics</div>
-          <div className="text-2xl my-2">16:00</div>
+          <div className="text-2xl my-2">20:00</div>
           <div>Sapporo Stadium</div>
         </div>
         <div className="flex flex-col items-center">
-          <div>IRAQ U23</div>
           <Image
-            src="/images/Hand-of-God.png"
+            src={t2Logo}
             width={400}
             height={400}
-            alt="Iraq Logo"
-            className="w-12 h-12"
+            alt="Logo"
+            className="w-20 h-20 mb-2"
           />
+          <div>{t2Name}</div>
         </div>
       </div>
     </Link>

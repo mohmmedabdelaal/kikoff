@@ -21,10 +21,13 @@ import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { uploadImageToCloudinary } from '@/lib/cloundinary_utils';
 import Image from 'next/image';
+import { CldUploadWidget } from 'next-cloudinary';
 
 const NewsForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [imagePreview, setImagePreview] = useState('');
+  // const [imagePreview, setImagePreview] = useState('');
+  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
+
   const pathName = usePathname();
   const router = useRouter();
   const editorRef = useRef(null);
@@ -49,24 +52,11 @@ const NewsForm = () => {
     setIsSubmitting(true);
     try {
       const slug = createSlug(values.title);
-      console.log(values.image);
 
-      if (values.image && !(values.image instanceof File)) {
-        throw new Error('Invalid image file type.');
-      }
-
-      // 2. Upload to Cloudinary
-      let imageUrl = null;
-      if (values.image) {
-        imageUrl = await uploadImageToCloudinary(values.image);
-        if (!imageUrl) {
-          throw new Error('Image upload failed.');
-        }
-      }
       // Create the news article
       await createNews({
         title: values.title,
-        image: imageUrl,
+        image: uploadedImageUrl,
         content: values.content,
         slug: slug,
         path: pathName,
@@ -183,24 +173,35 @@ const NewsForm = () => {
             <FormItem>
               <FormLabel>Image</FormLabel>
               <FormControl>
-                <Controller
-                  control={form.control} // Pass the form control
-                  name="image" // Specify the field name
-                  render={({ field: { onChange, value } }) => (
-                    <Input
-                      type="file"
-                      accept="image/*"
-                      onChange={onChange} // Use the provided onChange
-                      value={undefined}
-
-                      // Set value to undefined, Controller handles the File
-                    />
-                  )}
-                />
+                <CldUploadWidget
+                  uploadPreset="vjrled0a"
+                  onSuccess={(result: any) => {
+                    if (result.event === 'success') {
+                      setUploadedImageUrl(result.info?.secure_url);
+                    }
+                  }}
+                  options={
+                    {
+                      // Add options object
+                      acceptedFileTypes: 'image/*', // Restrict to image files
+                    } as any
+                  }
+                >
+                  {({ open }) => {
+                    return (
+                      <button
+                        className="btn btn-primary p-2 rounded bg-orange-900"
+                        onClick={() => open()}
+                      >
+                        Upload an Image
+                      </button>
+                    );
+                  }}
+                </CldUploadWidget>
               </FormControl>
-              {imagePreview ? (
+              {uploadedImageUrl ? (
                 <Image
-                  src={imagePreview}
+                  src={uploadedImageUrl}
                   alt="Preview"
                   width={200}
                   height={200}

@@ -4,7 +4,6 @@ import News from '@/database/News.model';
 import { connectToDatabase } from '../db';
 import { revalidatePath } from 'next/cache';
 import mongoose from 'mongoose';
-import { uploadImageToCloudinary } from '../cloundinary_utils';
 
 export interface CreateNewsParams {
   slug: string;
@@ -20,20 +19,14 @@ export async function createNews(params: CreateNewsParams) {
     await connectToDatabase();
 
     const { slug, image, content, title, path } = params;
-    const imageUrl = await uploadImageToCloudinary(image);
-
-    if (!imageUrl) {
-      // Handle the case where the image upload fails
-      throw new Error('Image upload failed.');
-    }
-    console.log(imageUrl);
 
     const newNews = await News.create({
       slug,
-      image: imageUrl,
+      image,
       content,
       title,
     });
+    console.log(newNews);
 
     revalidatePath(path);
   } catch (error) {
