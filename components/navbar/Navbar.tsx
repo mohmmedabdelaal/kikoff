@@ -6,7 +6,7 @@ import SearchBar from '../share/SearchBar';
 
 const Navbar = () => {
   return (
-    <nav className={`${styles.navbar} fixed z-50 w-full gap-5 p-6`}>
+    <nav className={`${styles.navbar} fixed z-50 w-full gap-5 p-3`}>
       <div className={styles.logo}>
         <Link href="/">
           <Image

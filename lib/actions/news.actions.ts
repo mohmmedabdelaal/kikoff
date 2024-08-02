@@ -45,7 +45,7 @@ export async function getNews(params: GetNewsParams) {
 
     // const { page = 1, pageSize = 10 } = params;
 
-    const news = await News.find({});
+    const news = await News.find({}).sort({ createdDate: -1 });
 
     return { news };
   } catch (error) {

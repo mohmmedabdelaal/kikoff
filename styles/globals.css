@@ -52,6 +52,25 @@ body {
   .tag {
     @apply text-white border border-gray-400 rounded-md px-3 py-2 cursor-pointer select-none text-center;
   }
+  .active {
+    position: relative; /* Required for ::after positioning */
+  }
+
+  .active::after {
+    content: '';
+    position: absolute; /* Position relative to the active link */
+    bottom: 0; /* Align to the bottom of the link */
+    left: 0; /* Start from the left edge of the link */
+    width: 100%; /* Extend the full width of the link */
+    height: 4px; /* Adjust the underline thickness */
+    background-color: white; /* Set the underline color */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
+
+  /* Hover Effect */
+  .active:hover::after {
+    background-color: #ccc; /* Change to a darker color on hover */
+  }
 
   .tag:hover {
     @apply bg-gray-600;

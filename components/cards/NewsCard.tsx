@@ -2,15 +2,19 @@ import React from 'react';
 import { Card } from '../ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getTimestamp } from '@/lib/utils';
+import Metrics from '../share/Metrics';
+import HTMLviewer from '../share/HtmlViewer';
 
 interface Props {
   title: string;
   content: string;
   image: string;
   linkSrc: string;
+  createdAt: Date;
 }
 
-const NewsCard = ({ title, content, image, linkSrc }: Props) => {
+const NewsCard = ({ title, content, image, linkSrc, createdAt }: Props) => {
   return (
     <div className="flex flex-col justify-between max-w-sm rounded bg-slate-300 overflow-hidden shadow-sm">
       <Image
@@ -22,14 +26,22 @@ const NewsCard = ({ title, content, image, linkSrc }: Props) => {
       />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
-        <p className="text-gray-700 text-base">{content}</p>
+
+        <HTMLviewer data={content} />
       </div>
-      <div className="px-6 pt-4 pb-2">
+      <div className="flex flex-wrap justify-between px-6 pt-4 pb-2">
+        <Metrics createdAt={createdAt} replies={3} />
         <Link
           href={`/news/${linkSrc}`}
-          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+          className=" flex rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
         >
-          More details
+          <p> More details</p>
+          <Image
+            src="/assets/icons/arrow.svg"
+            width={20}
+            height={20}
+            alt="arrow"
+          />
         </Link>
       </div>
     </div>

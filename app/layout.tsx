@@ -21,9 +21,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="h-full relative">
           <Navbar />
-          <Hero />
-          <section className="flex border min-h-screen px-1 pb-1 pt-36 max-md:pb-14 sm:px-14">
-            <div className=" w-full max-w-5xl">{children}</div>
+          <section className="flex  min-h-screen pt-14">
+            <div className=" w-full ">{children}</div>
           </section>
         </main>
       </body>
