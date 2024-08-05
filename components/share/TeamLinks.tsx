@@ -9,7 +9,7 @@ const TeamLinks = () => {
     setActiveLink(linkName);
   };
   return (
-    <nav className="flex justify-start p-2 text-center">
+    <nav className="flex justify-start fixed z-50 p-2 text-center">
       <ul className="list-none m-0 p-0">
         <li className="inline mr-4">
           <Link

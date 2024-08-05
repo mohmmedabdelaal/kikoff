@@ -31,9 +31,6 @@ const Navbar = () => {
           <Link href="/teams">Teams</Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/players">Players</Link>
-        </li>
-        <li className={styles.navItem}>
           <Link href="/about">About Us</Link>
         </li>
       </ul>

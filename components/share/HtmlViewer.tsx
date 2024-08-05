@@ -21,7 +21,7 @@ const HTMLviewer = ({ data }: Props) => {
   }, []);
   return (
     <div className="text-dark500_light700 markdown w-full min-w-full">
-      <p>{parse(data)}</p>
+      {parse(data)}
     </div>
   );
 };

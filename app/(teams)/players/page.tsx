@@ -1,3 +1,4 @@
+import BoardCard from '@/components/cards/BoardCard';
 import React from 'react';
 
 const page = () => {
@@ -10,6 +11,8 @@ const page = () => {
         <li>de brune</li>
         <li>messi</li>
       </ul>
+
+      <BoardCard />
     </div>
   );
 };

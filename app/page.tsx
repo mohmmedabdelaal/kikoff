@@ -1,7 +1,8 @@
+import DiscoverCard from '@/components/cards/DiscoverCard';
 import NewsCard from '@/components/cards/NewsCard';
 import ScoreCard from '@/components/cards/ScoreCard';
 import Hero from '@/components/Hero';
-import { createNews, getNews } from '@/lib/actions/news.actions';
+import { getNews } from '@/lib/actions/news.actions';
 
 export default async function Home() {
   const { news } = await getNews({});
@@ -27,6 +28,7 @@ export default async function Home() {
         </ul>
         {/* </div> */}
       </div>
+      <div>{/* <DiscoverCard /> */}</div>
     </>
   );
 }

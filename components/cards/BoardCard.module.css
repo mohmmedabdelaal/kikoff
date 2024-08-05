@@ -1,0 +1,76 @@
+.container {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 600px;
+}
+.title {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.date::after {
+  margin: auto 4rem;
+  content: ' ';
+  width: 80%;
+  height: 2px;
+  border-radius: 10px;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.date {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.competition-data {
+  display: block;
+  font-size: 10px;
+  font-weight: 100;
+}
+
+.match-info {
+  display: flex;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  margin-right: 15px;
+}
+
+.competition {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.team img {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+
+.result {
+  font-size: 24px;
+}
+
+.status {
+  font-size: 10px;
+  margin-right: 30px;
+}

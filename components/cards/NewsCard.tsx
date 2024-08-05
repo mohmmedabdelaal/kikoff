@@ -26,7 +26,6 @@ const NewsCard = ({ title, content, image, linkSrc, createdAt }: Props) => {
       />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
-
         <HTMLviewer data={content} />
       </div>
       <div className="flex flex-wrap justify-between px-6 pt-4 pb-2">
