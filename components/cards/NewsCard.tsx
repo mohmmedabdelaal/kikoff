@@ -29,7 +29,7 @@ const NewsCard = ({ title, content, image, linkSrc, createdAt }: Props) => {
         <HTMLviewer data={content} />
       </div>
       <div className="flex flex-wrap justify-between px-6 pt-4 pb-2">
-        <Metrics createdAt={createdAt} replies={3} />
+        <Metrics createdAt={createdAt} replays={3} />
         <Link
           href={`/news/${linkSrc}`}
           className=" flex rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"

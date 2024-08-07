@@ -1,11 +1,22 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-const NewsLis = ({ news }) => {
+interface NewsItem {
+  _id: string;
+  title: string;
+  // Add other properties if necessary
+  // image?: string; // Uncomment if you have an image property
+}
+
+interface NewsListProps {
+  news: NewsItem[];
+}
+
+const NewsList = ({ news }: NewsListProps) => {
   return (
     <ul className="news-list">
       {news.length > 0 &&
-        news.map((item: any) => (
-          <li key={item.id}>
+        news.map((item) => (
+          <li key={item._id}>
             <Link href={`/news/${item._id}`}>
               {/* <img src={`${item.image}`} alt={item.title} /> */}
               <span>{item.title}</span>
@@ -16,4 +27,4 @@ const NewsLis = ({ news }) => {
   );
 };
 
-export default NewsLis;
+export default NewsList
