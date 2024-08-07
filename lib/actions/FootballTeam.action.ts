@@ -55,7 +55,7 @@ export async function getTeams(params: GetTeamsParams) {
 
 export async function getTeamById(teamId: string) {
   try {
-    await connectToDatabase();
+    connectToDatabase();
 
     const team = await FootballTeam.findById(teamId);
 

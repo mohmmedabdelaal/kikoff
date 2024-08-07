@@ -16,7 +16,7 @@ export interface CreateNewsParams {
 export async function createNews(params: CreateNewsParams) {
   try {
     // Connect to the database
-    await connectToDatabase();
+    connectToDatabase();
 
     const { slug, image, content, title, path } = params;
 

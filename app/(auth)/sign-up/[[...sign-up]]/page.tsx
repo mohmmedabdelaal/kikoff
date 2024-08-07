@@ -1,11 +1,16 @@
-import { SignIn, SignUp } from '@clerk/nextjs';
+import { SignUp } from '@clerk/nextjs';
 import React from 'react';
 
 const page = () => {
   return (
-    <div>
+    <div className="flex min-h-full min-w-full bg-slate-700">
+    <div className="p-6">
       <SignUp />
     </div>
+    <div>
+      <h1>Kickoff web site</h1>
+    </div>
+  </div>
   );
 };
 

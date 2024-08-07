@@ -6,6 +6,8 @@ export interface INews extends Document {
   image: string;
   content: string;
   title: string;
+  author: Schema.Types.ObjectId;
+  replays: Schema.Types.ObjectId[];
   createdDate: Date;
 }
 
@@ -27,6 +29,8 @@ const NewsSchema = new Schema({
     type: String,
     required: true,
   },
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
+  answers: [{ type: Schema.Types.ObjectId, ref: 'Replay' }],
   createdDate: {
     type: Date,
     default: Date.now,
