@@ -26,7 +26,6 @@ export async function createNews(params: CreateNewsParams) {
       content,
       title,
     });
-    console.log(newNews);
 
     revalidatePath(path);
   } catch (error) {

@@ -1,4 +1,3 @@
-import DiscoverCard from '@/components/cards/DiscoverCard';
 import NewsCard from '@/components/cards/NewsCard';
 import ScoreCard from '@/components/cards/ScoreCard';
 import Hero from '@/components/Hero';

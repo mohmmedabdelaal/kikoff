@@ -19,13 +19,11 @@ import { Input } from '@/components/ui/input';
 import { NewsSchema } from '@/lib/validations';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import { uploadImageToCloudinary } from '@/lib/cloundinary_utils';
 import Image from 'next/image';
 import { CldUploadWidget } from 'next-cloudinary';
 
 const NewsForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // const [imagePreview, setImagePreview] = useState('');
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
 
   const pathName = usePathname();

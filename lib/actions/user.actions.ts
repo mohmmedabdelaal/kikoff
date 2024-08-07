@@ -2,13 +2,11 @@
 
 import User from '@/database/User.model';
 import { connectToDatabase } from '../db';
-import { revalidatePath } from 'next/cache';
 import {
   CreateUserParams,
   DeleteUserParams,
   UpdateUserParams,
 } from './types.shared';
-import { useStyleRegistry } from 'styled-jsx';
 import Replay from '@/database/Replay.model';
 
 export async function createUser(userData: CreateUserParams) {
