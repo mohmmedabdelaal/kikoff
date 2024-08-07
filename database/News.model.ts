@@ -30,7 +30,7 @@ const NewsSchema = new Schema({
     required: true,
   },
   author: { type: Schema.Types.ObjectId, ref: 'User' },
-  answers: [{ type: Schema.Types.ObjectId, ref: 'Replay' }],
+  replays: [{ type: Schema.Types.ObjectId, ref: 'Replay' }],
   createdDate: {
     type: Date,
     default: Date.now,

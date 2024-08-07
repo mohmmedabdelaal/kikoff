@@ -9,7 +9,7 @@ const Page = () => {
     <div>
       <CldUploadWidget
         uploadPreset="vjrled0a"
-        onSuccess={(result) => {
+        onSuccess={(result: any) => {
           if (result.event === 'success') {
             setUploadedImageUrl(result.info?.secure_url);
           }

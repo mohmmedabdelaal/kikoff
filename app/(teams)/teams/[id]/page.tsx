@@ -5,7 +5,7 @@ import { getTeamById } from '@/lib/actions/FootballTeam.action';
 import Image from 'next/image';
 
 interface Props {
-  params: string;
+  params: { id: string };
 }
 
 const page = async ({ params }: Props) => {

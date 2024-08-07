@@ -1,8 +1,7 @@
 import styles from './page.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { fullTeams } from '@/lib/teams';
-import { createTeam, getTeams } from '@/lib/actions/FootballTeam.action';
+import {  getTeams } from '@/lib/actions/FootballTeam.action';
 
 const page = async () => {
   const { teams } = await getTeams({});

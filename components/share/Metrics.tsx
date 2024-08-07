@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 interface Props {
   createdAt: Date;
-  replies: number;
+  replays: number;
 }
 
-const Metrics = ({ createdAt, replies }: Props) => {
+const Metrics = ({ createdAt, replays }: Props) => {
   return (
     <div className="flex">
       <span className="flex items-center justify-start gap-1 bg-transparent p-2">
@@ -26,7 +26,7 @@ const Metrics = ({ createdAt, replies }: Props) => {
           width={20}
           height={20}
         />
-        <p>{replies}</p>
+        <p>{replays}</p>
       </span>
     </div>
   );

@@ -1,15 +1,30 @@
 import { getNewsById } from '@/lib/actions/news.actions';
 import mongoose from 'mongoose';
-import Image from 'next/image';
+interface Props {
+  params: { id: string };
+}
 
-const page = async ({ params }) => {
+interface News {
+  title: string;
+  content: string;
+  // Add other necessary properties here
+}
+
+interface GetNewsByIdResponse {
+  news?: News;
+}
+
+const page = async ({ params }: Props) => {
   const { id } = params;
   const sId = new mongoose.Types.ObjectId(id);
 
-  const { news } = await getNewsById({ id });
-  if (!news) {
-    return <div>loading</div>;
+  const response: GetNewsByIdResponse | undefined = await getNewsById({ id });
+
+  if (!response || !response.news) {
+    return <div>Loading...</div>;
   }
+
+  const { news } = response;
   console.log(news);
 
   return (
