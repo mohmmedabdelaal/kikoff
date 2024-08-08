@@ -5,7 +5,6 @@ import { getNews } from '@/lib/actions/news.actions';
 
 export default async function Home() {
   const { news } = await getNews({});
-  console.log(news);
 
   return (
     <>
@@ -19,7 +18,6 @@ export default async function Home() {
                 key={sNews._id}
                 title={sNews.title}
                 image={sNews.image}
-                content={sNews.content}
                 linkSrc={sNews._id}
                 createdAt={sNews.createdDate}
               />

@@ -1,3 +1,4 @@
+import HTMLviewer from '@/components/share/HtmlViewer';
 import { getNewsById } from '@/lib/actions/news.actions';
 import mongoose from 'mongoose';
 interface Props {
@@ -28,13 +29,14 @@ const page = async ({ params }: Props) => {
   console.log(news);
 
   return (
-    <article className="news-article">
+    <article className="pt-20">
       <header>
         {/* <Image src={`/images/news/${news.image}`} alt={news.title} fill /> */}
         <h1>{news.title}</h1>
         <time>{'Date'}</time>
       </header>
-      <p>{news.content}</p>
+      <HTMLviewer data={news.content} />
+      {/* <p>{news.content}</p> */}
     </article>
   );
 };

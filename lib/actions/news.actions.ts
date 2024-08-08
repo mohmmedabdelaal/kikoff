@@ -4,6 +4,8 @@ import News from '@/database/News.model';
 import { connectToDatabase } from '../db';
 import { revalidatePath } from 'next/cache';
 import mongoose from 'mongoose';
+import { IUser } from '@/database/User.model';
+import { Schema } from 'mongoose';
 
 export interface CreateNewsParams {
   slug: string;
@@ -11,6 +13,7 @@ export interface CreateNewsParams {
   content: string;
   title: string;
   path: string;
+  author: Schema.Types.ObjectId | IUser;
 }
 
 export async function createNews(params: CreateNewsParams) {
@@ -18,13 +21,14 @@ export async function createNews(params: CreateNewsParams) {
     // Connect to the database
     connectToDatabase();
 
-    const { slug, image, content, title, path } = params;
+    const { slug, image, content, title, path, author } = params;
 
     const newNews = await News.create({
       slug,
       image,
       content,
       title,
+      author,
     });
 
     revalidatePath(path);

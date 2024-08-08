@@ -22,7 +22,11 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { CldUploadWidget } from 'next-cloudinary';
 
-const NewsForm = () => {
+interface Props {
+  mongodbUserId: string;
+}
+
+const NewsForm = ({ mongodbUserId }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
 
@@ -56,6 +60,7 @@ const NewsForm = () => {
         title: values.title,
         image: uploadedImageUrl,
         content: values.content,
+        author: JSON.parse(mongodbUserId),
         slug: slug,
         path: pathName,
       });

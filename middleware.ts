@@ -9,6 +9,7 @@ export default authMiddleware({
     '/api/webhook',
     '/news/:id',
     '/profile/:id',
+    '/api/webhook',
   ],
   ignoredRoutes: ['/api/webhook'],
 });

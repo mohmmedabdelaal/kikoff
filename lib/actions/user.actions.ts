@@ -9,14 +9,26 @@ import {
 } from './types.shared';
 import Replay from '@/database/Replay.model';
 
+export async function getUserById(params: any) {
+  try {
+    connectToDatabase();
+    const { userId } = params;
+    const newUser = await User.findOne({ clerkId: userId });
+    return newUser;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+}
+
 export async function createUser(userData: CreateUserParams) {
   try {
     connectToDatabase();
     const user = await User.create(userData);
     return user;
-  } catch (error) {
-    console.log(error);
-    throw error;
+  } catch (e) {
+    console.log(e);
+    throw e;
   }
 }
 
