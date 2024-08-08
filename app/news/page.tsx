@@ -2,7 +2,7 @@ import { auth } from '@clerk/nextjs';
 import styles from './page.module.css';
 import NewsForm from '@/components/form/NewsForm';
 import { redirect } from 'next/navigation';
-import { getUserById } from '@/lib/actions/user.actions';
+import { getUserById } from '@/lib/actions/users.actions';
 
 const page = async () => {
   const { userId, user } = auth();
