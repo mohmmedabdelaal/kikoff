@@ -12,12 +12,15 @@ import Replay from '@/database/Replay.model';
 export async function getUserById(params: any) {
   try {
     connectToDatabase();
+
     const { userId } = params;
-    const newUser = await User.findOne({ clerkId: userId });
-    return newUser;
-  } catch (e) {
-    console.log(e);
-    throw e;
+
+    const user = await User.findOne({ clerkId: userId });
+
+    return user;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }
 

@@ -8,6 +8,15 @@ export interface CreateUserParams {
     picture: string;
 }
 
+export interface CreateNewsParams {
+    slug: string;
+    image: string | null;
+    content: string;
+    title: string;
+    path: string;
+    author: Schema.Types.ObjectId | IUser;
+  }
+
 export interface UpdateUserParams {
     clerkId: string;
     updateData: Partial<IUser>;

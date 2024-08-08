@@ -6,15 +6,7 @@ import { revalidatePath } from 'next/cache';
 import mongoose from 'mongoose';
 import { IUser } from '@/database/User.model';
 import { Schema } from 'mongoose';
-
-export interface CreateNewsParams {
-  slug: string;
-  image: string | null;
-  content: string;
-  title: string;
-  path: string;
-  author: Schema.Types.ObjectId | IUser;
-}
+import { CreateNewsParams } from './types.shared';
 
 export async function createNews(params: CreateNewsParams) {
   try {
