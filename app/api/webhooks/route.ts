@@ -89,8 +89,14 @@ export async function POST(req: Request) {
       },
       path: `/profile/${id}`,
     });
+    return new Response(JSON.stringify({ message: 'OK', user: mongoUser }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-    return NextResponse.json({ message: 'OK', user: mongoUser });
+    // return NextResponse.json({ message: 'OK', user: mongoUser });
   }
 
   if (eventType === 'user.deleted') {
@@ -99,9 +105,18 @@ export async function POST(req: Request) {
     const deletedUser = await deleteUser({
       clerkId: id!,
     });
-
-    return NextResponse.json({ message: 'OK', user: deletedUser });
+    return new Response(JSON.stringify({ message: 'OK', user: deleteUser }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
-  return NextResponse.json({ message: 'OK' });
+  return new Response(JSON.stringify({ message: 'OK' }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 }
