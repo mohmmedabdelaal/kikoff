@@ -18,16 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ClerkProvider>
+      <ClerkProvider>
+        <body className={inter.className}>
           <main className="h-full relative">
             <Navbar />
             <section className="flex  min-h-screen pt-14">
               <div className=" w-full ">{children}</div>
             </section>
           </main>
-        </ClerkProvider>
-      </body>
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
