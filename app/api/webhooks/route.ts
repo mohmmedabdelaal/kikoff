@@ -10,7 +10,7 @@ import {
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
+  // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
   const payload = await req.json();
   const body = JSON.stringify(payload);
 
-  // Create a new SVIX instance with your secret.
+  // Create a new Svix instance with your secret.
   const wh = new Webhook(WEBHOOK_SECRET);
 
   let evt: WebhookEvent;
@@ -56,6 +56,7 @@ export async function POST(req: Request) {
   }
 
   const eventType = evt.type;
+  console.log(eventType);
 
   if (eventType === 'user.created') {
     const { id, email_addresses, image_url, username, first_name, last_name } =
