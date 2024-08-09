@@ -71,7 +71,12 @@ export async function POST(req: Request) {
       picture: image_url,
     });
 
-    return NextResponse.json({ message: 'OK', user: mongoUser });
+    return new Response(JSON.stringify({ message: 'OK', user: mongoUser }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   if (eventType === 'user.updated') {
