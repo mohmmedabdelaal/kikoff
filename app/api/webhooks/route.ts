@@ -56,27 +56,24 @@ export async function POST(req: Request) {
   }
 
   const eventType = evt.type;
-  console.log(eventType);
 
   if (eventType === 'user.created') {
-    const { id, email_addresses, image_url, username, first_name, last_name } =
+    const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
 
-    // Create a new user in your database
-    const mongoUser = await createUser({
-      clerkId: id,
-      name: `${first_name}${last_name ? ` ${last_name}` : ''}`,
-      username: username!,
-      email: email_addresses[0].email_address,
-      picture: image_url,
-    });
-
-    return new Response(JSON.stringify({ message: 'OK', user: mongoUser }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      const mongoUser = await createUser({
+        clerkId: id,
+        picture: image_url,
+        username: username ?? '',
+        name: `${first_name} ${last_name ? last_name : ''}`,
+        email: email_addresses[0]?.email_address,
+      });
+      return NextResponse.json({ message: 'User created', user: mongoUser });
+    } catch (error) {
+      console.error('Error creating user in MongoDB:', error);
+      return new Response('Failed to create user in database', { status: 500 });
+    }
   }
 
   if (eventType === 'user.updated') {

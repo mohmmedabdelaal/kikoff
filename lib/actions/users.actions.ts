@@ -26,13 +26,13 @@ export async function getUserById(params: any) {
 
 export async function createUser(userData: CreateUserParams) {
   try {
-    connectToDatabase();
+    await connectToDatabase(); // Ensure database connection is established
     const user = await User.create(userData);
-    console.log(user);
+    console.log('User created:', user); // More informative log message
     return user;
-  } catch (e) {
-    console.log(e);
-    throw e;
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw error; // Re-throw the error for proper handling
   }
 }
 

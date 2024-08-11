@@ -12,7 +12,7 @@ interface Props {
 
 const NewsCard = ({ title, image, linkSrc, createdAt }: Props) => {
   return (
-    <div className="flex flex-col justify-between max-w-sm rounded bg-slate-300 overflow-hidden shadow-sm">
+    <li className="flex flex-col justify-between max-w-sm rounded bg-slate-300 overflow-hidden shadow-sm">
       <Image
         width={400}
         height={400}
@@ -38,7 +38,7 @@ const NewsCard = ({ title, image, linkSrc, createdAt }: Props) => {
           />
         </Link>
       </div>
-    </div>
+    </li>
   );
 };
 

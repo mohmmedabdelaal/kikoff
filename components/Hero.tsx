@@ -3,12 +3,11 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <div className="relative h-[90vh] mt-8">
+    <div className="relative h-[85vh] mt-8">
       <Image
         src="/images/barca.jpg" // Update with correct path
         alt="Hero Image"
         layout="fill"
-        objectFit="cover"
         priority // Prioritize loading
       />
       <div className="overlay absolute  inset-0 bg-black bg-opacity-50 flex justify-center items-end">
