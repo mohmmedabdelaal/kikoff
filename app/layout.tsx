@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
       <ClerkProvider>
+    <html lang="en">
         <body className={inter.className}>
           <main className="h-full relative">
             <Navbar />
@@ -27,7 +27,7 @@ export default function RootLayout({
             </section>
           </main>
         </body>
-      </ClerkProvider>
     </html>
+      </ClerkProvider>
   );
 }

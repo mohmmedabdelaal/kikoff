@@ -4,7 +4,7 @@ import ScoreBoard from '../share/ScoreBoard';
 
 const ScoreCard = () => {
   return (
-    <div className="max-w rounded bg-slate-800 overflow-hidden shadow-sm col-span-2">
+    <div className="max-w rounded bg-slate-800 overflow-hidden shadow-sm col-span-2 mb-4">
       <Image
         width={400}
         height={400}
