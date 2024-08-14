@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../styles/globals.css';
 import Navbar from '@/components/navbar/Navbar';
+import Footer from '@/components/share/footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,17 +18,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <ClerkProvider>
-    <html lang="en">
+    <ClerkProvider>
+      <html lang="en">
         <body className={inter.className}>
-          <main className="h-full relative">
+          <main className="h-full relative flex flex-col">
             <Navbar />
-            <section className="flex  min-h-screen pt-14">
-              <div className=" w-full ">{children}</div>
+
+            <section className="flex">
+              <div className="w-full">{children}</div>
             </section>
+            <div>
+              <Footer />
+            </div>
           </main>
         </body>
-    </html>
-      </ClerkProvider>
+      </html>
+    </ClerkProvider>
   );
 }

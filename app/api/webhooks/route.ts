@@ -10,7 +10,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
-  const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
+  const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
@@ -72,7 +72,13 @@ export async function POST(req: Request) {
       name: `${first_name} ${last_name ? ` ${last_name}` : ''}`,
       email: email_addresses[0].email_address,
     });
-    return NextResponse.json({ message: 'ok', user: monogoUser });
+    const stringifyObj = JSON.stringify(monogoUser);
+    return new Response(stringifyObj, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      status: 201,
+    });
   }
 
   if (eventType === 'user.updated') {

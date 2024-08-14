@@ -4,7 +4,8 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', sans-serif;
+  height: 100%;
+  font-family: Arial, sans-serif;
 }
 
 @layer utilities {
