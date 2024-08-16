@@ -31,7 +31,6 @@ const page = async ({ params }: Props) => {
   }
 
   const { news } = response;
-  console.log(news);
 
   return (
     <article className="pt-20">
@@ -49,16 +48,23 @@ const page = async ({ params }: Props) => {
           </div>
         </div>
       </header>
-      <div className="flex flex-col justify-center m-auto align-center">
-        <Image
-          src={news.image}
-          alt="image"
-          width={800}
-          height={800}
-          className="rounded-md"
-        />
-        <HTMLviewer data={news.content} />
-      </div>
+
+      <article className="flex justify-center items-center bg-gray-200 m-0 p-0 font-sans">
+        <div className="bg-slate-600 text-white w-3/5 max-w-3xl p-0 shadow-lg">
+          <Image
+            width={600}
+            height={600}
+            src={news.image}
+            alt="Casemiro holding a trophy"
+            className="w-full h-auto block"
+          />
+          <div className="p-5">
+            <div className="text-lg leading-relaxed">
+              <HTMLviewer data={news.content} />
+            </div>
+          </div>
+        </div>
+      </article>
       {/* <p>{news.content}</p> */}
     </article>
   );

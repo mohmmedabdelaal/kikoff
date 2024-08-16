@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div className={classes.footer}>
       <div className={classes.footer_container}>
-        <div className={classes.logo}>
+        <div className={`${classes.logo} flex justify-center`}>
           <Image
             src="/assets/logo.png"
             alt="Goal Logo"

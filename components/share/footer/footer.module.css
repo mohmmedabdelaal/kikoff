@@ -1,7 +1,7 @@
 .footer {
   background-color: #000;
   padding: 20px 0;
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   text-align: center;
   margin-top: auto;
 }
@@ -15,6 +15,7 @@
 
 .logo img {
   width: 100px;
+  text-align: center;
   margin-bottom: 20px;
 }
 

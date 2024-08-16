@@ -11,7 +11,7 @@ interface Props {
 const page = async ({ params }: Props) => {
   const { id } = params;
   const sTeam = await getTeamById(id);
-  console.log(sTeam);
+
   return (
     <div className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-600 min-h-screen pt-16">
       <section className="px-20">
@@ -26,14 +26,6 @@ const page = async ({ params }: Props) => {
           <h1 className="text-6xl text-light-850">{sTeam.name}</h1>
         </header>
         <div className="w-full h-1  rounded-sm bg-gray-700 "></div>
-        <TeamLinks />
-        <ScoreCard />
-        <ScoreCard />
-        <ScoreCard />
-        <ScoreCard />
-        <ScoreCard />
-        <ScoreCard />
-        <ScoreCard />
       </section>
     </div>
   );
