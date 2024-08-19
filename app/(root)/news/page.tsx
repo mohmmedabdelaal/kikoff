@@ -10,8 +10,6 @@ const page = async () => {
   if (!userId) redirect('/sign-in');
 
   const mongoUser = await getUserById({ userId });
-
-  console.log(22 + mongoUser);
   return (
     <div className={styles.container}>
       <main className={styles.mainContent}>

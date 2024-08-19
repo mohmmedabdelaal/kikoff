@@ -8,6 +8,19 @@ import { SignedOut, useAuth, UserButton } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import { usePathname } from 'next/navigation';
 import { SignedIn } from '@clerk/clerk-react';
+const navItems = [
+  { href: '/news', label: 'News' },
+  { href: '/competitions', label: 'Competitions' },
+  {
+    label: 'Teams', // No href for dropdown parent
+    dropdown: [
+      { href: '/teams/leagues', label: 'Leagues' },
+      { href: '/teams/players', label: 'Players' },
+      { href: '/teams/teams', label: 'Teams' },
+    ],
+  },
+  { href: '/about', label: 'About Us' },
+];
 
 const Navbar = () => {
   const { userId, signOut } = useAuth();
@@ -32,18 +45,28 @@ const Navbar = () => {
         <SearchBar />
       </div>
       <ul className={styles.navList}>
-        <li className={styles.navItem}>
-          <Link href="/news">News</Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link href="/competitions">Competitions</Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link href="/teams">Teams</Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link href="/about">About Us</Link>
-        </li>
+        {navItems.map((item, index) => (
+          <li key={index} className={styles.navItem}>
+            {item.href ? (
+              <Link className={styles.navLink} href={item.href}>
+                {item.label}
+              </Link>
+            ) : (
+              <div className={styles.dropdown}>
+                <Link className={styles.navLink} href="#">
+                  {item.label}
+                </Link>
+                <div className={styles.dropdown_content}>
+                  {item.dropdown.map((subItem, subIndex) => (
+                    <Link key={subIndex} href={subItem.href}>
+                      {subItem.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
         <li className={`${styles.navItem} pl-10 flex`}>
           <SignedOut>
             <Link href="/sign-in">
