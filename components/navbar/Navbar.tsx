@@ -8,19 +8,8 @@ import { SignedOut, useAuth, UserButton } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import { usePathname } from 'next/navigation';
 import { SignedIn } from '@clerk/clerk-react';
-const navItems = [
-  { href: '/news', label: 'News' },
-  { href: '/competitions', label: 'Competitions' },
-  {
-    label: 'Teams', // No href for dropdown parent
-    dropdown: [
-      { href: '/teams/leagues', label: 'Leagues' },
-      { href: '/teams/players', label: 'Players' },
-      { href: '/teams/teams', label: 'Teams' },
-    ],
-  },
-  { href: '/about', label: 'About Us' },
-];
+import { navItems } from '@/constants';
+import { string } from 'zod';
 
 const Navbar = () => {
   const { userId, signOut } = useAuth();
@@ -53,15 +42,27 @@ const Navbar = () => {
               </Link>
             ) : (
               <div className={styles.dropdown}>
-                <Link className={styles.navLink} href="#">
-                  {item.label}
-                </Link>
+                <span className="flex">
+                  <Link className={`${styles.navLink}`} href="#">
+                    {item.label}
+                  </Link>
+                  <Image
+                    src="/assets/down-arrow.png"
+                    alt="arrow"
+                    width={20}
+                    height={20}
+                  />
+                </span>
                 <div className={styles.dropdown_content}>
-                  {item.dropdown.map((subItem, subIndex) => (
-                    <Link key={subIndex} href={subItem.href}>
-                      {subItem.label}
-                    </Link>
-                  ))}
+                  {item.dropdown ? (
+                    item.dropdown.map((subItem, subIndex) => (
+                      <Link key={`${subIndex} + 10`} href={subItem.href ?? ''}>
+                        {subItem.label}
+                      </Link>
+                    ))
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
               </div>
             )}
@@ -69,7 +70,7 @@ const Navbar = () => {
         ))}
         <li className={`${styles.navItem} pl-10 flex`}>
           <SignedOut>
-            <Link href="/sign-in">
+            <Link href="/sign-in" className={styles.navLink}>
               <Image
                 src="/assets/icons/user.svg"
                 alt="login"
