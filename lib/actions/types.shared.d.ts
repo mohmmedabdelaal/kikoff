@@ -34,3 +34,11 @@ export interface createReplaysParams {
   news: Schema.Types.ObjectId;
   path: string;
 }
+
+export interface GetUserInfoParams {
+  userId: string;
+}
+
+interface GetNewsByIdParams {
+  newsId: string;
+}

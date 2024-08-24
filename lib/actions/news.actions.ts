@@ -4,9 +4,9 @@ import News from '@/database/News.model';
 import { connectToDatabase } from '../db';
 import { revalidatePath } from 'next/cache';
 import mongoose from 'mongoose';
-import { IUser } from '@/database/User.model';
+import User, { IUser } from '@/database/User.model';
 import { Schema } from 'mongoose';
-import { CreateNewsParams } from './types.shared';
+import { CreateNewsParams, GetNewsByIdParams } from './types.shared';
 
 export async function createNews(params: CreateNewsParams) {
   try {
@@ -49,22 +49,17 @@ export async function getNews(params: GetNewsParams) {
   }
 }
 
-interface GetNewsByIdParams {
-  id: string;
-}
-
 export async function getNewsById(params: GetNewsByIdParams) {
   try {
     await connectToDatabase();
-    const { id } = params;
-    const convertedId = new mongoose.Types.ObjectId(id);
+    const { newsId } = params;
+    const news = await News.findById(newsId).populate({
+      path: 'author',
+      model: User,
+      select: '_id clerkId name picture',
+    });
 
-    const news = await News.findById(id);
-
-    if (!news) {
-      throw new Error('Article Not found');
-    }
-    return { news };
+    return news;
   } catch (error) {
     console.log(error);
   }

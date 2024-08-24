@@ -12,3 +12,7 @@ export const NewsSchema = z.object({
   content: z.string().min(90, 'Content must be at least 90 characters long'),
   image: z.any().optional(),
 });
+
+export const ReplaySchema = z.object({
+  replay: z.string().min(4, 'Replay must be at least 4 characters long'),
+});

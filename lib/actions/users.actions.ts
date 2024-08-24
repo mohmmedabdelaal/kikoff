@@ -5,6 +5,7 @@ import { connectToDatabase } from '../db';
 import {
   CreateUserParams,
   DeleteUserParams,
+  GetUserInfoParams,
   UpdateUserParams,
 } from './types.shared';
 import Replay from '@/database/Replay.model';
@@ -63,6 +64,22 @@ export async function deleteUser(params: DeleteUserParams) {
     await Replay.deleteMany({ author: user._id });
     const deletedUser = await User.findByIdAndDelete({ clerkId });
     return deletedUser;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getUserInfo(params: GetUserInfoParams) {
+  try {
+    connectToDatabase();
+    const { userId } = params;
+    const user = await User.findOne({ clerkId: userId });
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    return user;
   } catch (error) {
     console.log(error);
   }
