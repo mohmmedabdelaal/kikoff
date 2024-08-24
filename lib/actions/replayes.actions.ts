@@ -3,6 +3,7 @@ import Replay from '@/database/Replay.model';
 import { connectToDatabase } from '../db';
 import { createReplaysParams } from './types.shared';
 import { revalidatePath } from 'next/cache';
+import News from '@/database/News.model';
 
 export async function createReplays(params: createReplaysParams) {
   try {
@@ -14,6 +15,10 @@ export async function createReplays(params: createReplaysParams) {
       author,
       news,
     });
+    const newsObject = await News.findByIdAndUpdate(news, {
+      $push: { replays: newReplay._id },
+    });
+
     revalidatePath(path);
   } catch (error) {
     console.log(error);

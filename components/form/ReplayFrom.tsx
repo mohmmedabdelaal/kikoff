@@ -42,8 +42,8 @@ const ReplayFrom = ({ newsId, authorId, news, username }: Props) => {
     setIsSubmitting(true);
     try {
       await createReplays({
-        author: JSON.parse(authorId),
         content: values.replay,
+        author: JSON.parse(authorId),
         news: JSON.parse(newsId),
         path: pathname,
       });
