@@ -27,7 +27,7 @@ export async function getUserById(params: any) {
 
 export async function createUser(userData: CreateUserParams) {
   try {
-    await connectToDatabase(); // Ensure database connection is established
+    connectToDatabase(); // Ensure database connection is established
     const user = await User.create(userData);
     console.log('User created:', user); // More informative log message
     return user;
