@@ -3,7 +3,6 @@
 import News from '@/database/News.model';
 import { connectToDatabase } from '../db';
 import { revalidatePath } from 'next/cache';
-import mongoose from 'mongoose';
 import User, { IUser } from '@/database/User.model';
 import { Schema } from 'mongoose';
 import { CreateNewsParams, GetNewsByIdParams } from './types.shared';
@@ -56,7 +55,7 @@ export async function getNewsById(params: GetNewsByIdParams) {
     const news = await News.findById(newsId).populate({
       path: 'author',
       model: User,
-      select: '_id clerkId name picture',
+      select: '_id clerkId name picture username',
     });
 
     return news;

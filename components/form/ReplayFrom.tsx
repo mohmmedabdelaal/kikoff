@@ -14,21 +14,18 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Textarea } from '../ui/textarea';
 import { usePathname } from 'next/navigation';
-import { getUserInfo } from '@/lib/actions/users.actions';
-import { createReplays } from '@/lib/actions/replayes.actions';
+import { createReplays } from '@/lib/actions/replays.actions';
 import { Button } from '../ui/button';
 
 interface Props {
   newsId: string;
   authorId: string;
-  news: string;
   username: string;
 }
 
-const ReplayFrom = ({ newsId, authorId, news, username }: Props) => {
+const ReplayFrom = ({ newsId, authorId, username }: Props) => {
   // const user = await getUserInfo({u})
   const [isSubmitting, setIsSubmitting] = useState(false);
-  console.log(username);
 
   const pathname = usePathname();
   const form = useForm<z.infer<typeof ReplaySchema>>({
@@ -74,7 +71,7 @@ const ReplayFrom = ({ newsId, authorId, news, username }: Props) => {
                   <Textarea
                     className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[100px] border"
                     {...field}
-                    placeholder="What do you think..."
+                    placeholder="Share your thoughts here..."
                   />
                 </FormControl>
 

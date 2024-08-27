@@ -11,9 +11,9 @@ const page = async () => {
 
   const mongoUser = await getUserById({ userId });
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container}`}>
       <main className={styles.mainContent}>
-        <h1>News</h1>
+        <h1 className="h1-bold text-dark100_light900">Create news</h1>
 
         <NewsForm mongodbUserId={JSON.stringify(mongoUser)} />
       </main>

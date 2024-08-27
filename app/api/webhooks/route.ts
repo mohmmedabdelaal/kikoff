@@ -96,12 +96,24 @@ export async function POST(req: Request) {
       },
       path: `/profile/${id}`,
     });
-    return NextResponse.json({ message: 'ok', user: monogoUser });
+    const stringifyObj = JSON.stringify(monogoUser);
+    return new Response(stringifyObj, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      status: 201,
+    });
   }
   if (eventType === 'user.deleted') {
     const { id } = evt.data;
     const deletedUser = deleteUser({ clerkId: id! });
-    return NextResponse.json({ message: 'Ok', user: deletedUser });
+    const stringifyObj = JSON.stringify(deletedUser);
+    return new Response(stringifyObj, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      status: 201,
+    });
   }
 
   return NextResponse.json({ message: 'OK' });

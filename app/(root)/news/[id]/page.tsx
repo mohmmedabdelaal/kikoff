@@ -5,6 +5,7 @@ import { getUserById, getUserInfo } from '@/lib/actions/users.actions';
 import { getTimestamp } from '@/lib/utils';
 import { auth } from '@clerk/nextjs';
 import Image from 'next/image';
+import Link from 'next/link';
 interface Props {
   params: { id: string };
 }
@@ -25,11 +26,14 @@ interface GetNewsByIdResponse {
 const page = async ({ params }: Props) => {
   const { id } = params;
   const { userId: clerkId } = auth();
-
+  let userInfo;
+  if (clerkId) userInfo = await getUserInfo({ userId: clerkId });
+  // console.log(userInfo);
   let mongodbUser;
   if (clerkId) mongodbUser = await getUserById({ userId: clerkId });
 
   const result = await getNewsById({ newsId: id });
+  console.log(result);
 
   return (
     <article className="pt-20">
@@ -42,7 +46,10 @@ const page = async ({ params }: Props) => {
             <p className="text-xs opacity-80">Publisher</p>
             <h1 className="text-5xl font-bold mb-4">{result.title}</h1>
             <p className="text-xs opacity-80">
-              {result.author.name} | {getTimestamp(result.createdDate)}
+              <Link href={`/author/${result.author.clerkId}`}>
+                {result.author.username}
+              </Link>{' '}
+              | {getTimestamp(result.createdDate)}
             </p>
           </div>
         </div>
@@ -66,8 +73,7 @@ const page = async ({ params }: Props) => {
       </section>
       <div>
         <ReplayFrom
-          news={result.content}
-          username={result.author?.name}
+          username={userInfo?.username}
           authorId={JSON.stringify(mongodbUser._id)}
           newsId={JSON.stringify(result._id)}
         />
