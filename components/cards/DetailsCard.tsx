@@ -21,25 +21,9 @@ const DetailsCard = () => {
             teamsheet, only for United to reveal on their own website that he
             was not in the squad after all.
           </p>
-          <p className="text-lg leading-relaxed">
-            The club insisted he had a muscle injury and the extent of it only
-            became apparent after arriving at their stadium. There had been no
-            mention of this injury ahead of the game, however, and Ten Hag would
-            reveal months later that he had indeed dropped Casemiro for the
-            final, making no mention of a potential injury.
-          </p>
-          <p className="text-lg leading-relaxed">
-            As United's players danced on the Wembley turf with the trophy after
-            singing in unison with new Manchester City champions, Casemiro cut a
-            sullen figure. This looked like the end, a brutal yet fitting
-            denouement to a season of nightmares.
-          </p>
-          <p className="text-lg leading-relaxed">
-            A move to the Saudi Pro League at the time looked like a logical
-            solution to United's problem of being weighed down by his huge
-            salary (the second-highest at the club) and Casemiro's struggles to
-            cope with the intensity of the Premier League at the age of 32.
-          </p>
+          <p className="text-lg leading-relaxed">c</p>
+          <p className="text-lg leading-relaxed">b</p>
+          <p className="text-lg leading-relaxed">a</p>
         </div>
       </div>
     </article>

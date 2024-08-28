@@ -81,40 +81,40 @@ export async function POST(req: Request) {
     });
   }
 
-  if (eventType === 'user.updated') {
-    // @ts-ignore
-    const { id, email_addresses, image_url, first_name, last_name, username } =
-      evt.data;
-    // @ts-ignore
-    const monogoUser = await updateUser({
-      clerkId: id,
-      updateData: {
-        picture: image_url,
-        username: username!,
-        name: `${first_name} ${last_name ? ` ${last_name}` : ''}`,
-        email: email_addresses[0].email_address,
-      },
-      path: `/profile/${id}`,
-    });
-    const stringifyObj = JSON.stringify(monogoUser);
-    return new Response(stringifyObj, {
-      headers: {
-        'content-type': 'application/json',
-      },
-      status: 201,
-    });
-  }
-  if (eventType === 'user.deleted') {
-    const { id } = evt.data;
-    const deletedUser = deleteUser({ clerkId: id! });
-    const stringifyObj = JSON.stringify(deletedUser);
-    return new Response(stringifyObj, {
-      headers: {
-        'content-type': 'application/json',
-      },
-      status: 201,
-    });
-  }
+  // if (eventType === 'user.updated') {
+  //   // @ts-ignore
+  //   const { id, email_addresses, image_url, first_name, last_name, username } =
+  //     evt.data;
+  //   // @ts-ignore
+  //   const monogoUser = await updateUser({
+  //     clerkId: id,
+  //     updateData: {
+  //       picture: image_url,
+  //       username: username!,
+  //       name: `${first_name} ${last_name ? ` ${last_name}` : ''}`,
+  //       email: email_addresses[0].email_address,
+  //     },
+  //     path: `/profile/${id}`,
+  //   });
+  //   const stringifyObj = JSON.stringify(monogoUser);
+  //   return new Response(stringifyObj, {
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     status: 201,
+  //   });
+  // }
+  // if (eventType === 'user.deleted') {
+  //   const { id } = evt.data;
+  //   const deletedUser = deleteUser({ clerkId: id! });
+  //   const stringifyObj = JSON.stringify(deletedUser);
+  //   return new Response(stringifyObj, {
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     status: 201,
+  //   });
+  // }
 
   return NextResponse.json({ message: 'OK' });
 }

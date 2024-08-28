@@ -7,7 +7,6 @@ const page = () => {
     <div className="border border-red-900 w-full">
       <h1>Premier League is here</h1>
       <Fixture />
-      <ReplayFrom />
     </div>
   );
 };
