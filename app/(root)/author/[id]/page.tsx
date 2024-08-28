@@ -2,8 +2,11 @@ import { getUserInfo } from '@/lib/actions/users.actions';
 import { getAuth } from '@clerk/nextjs/server';
 import Image from 'next/image';
 import React from 'react';
+interface Props {
+  params: any;
+}
 
-const AuthorPage = async ({ params }) => {
+const AuthorPage = async ({ params }: Props) => {
   // const { userId } = await getAuth();
   console.log(params.id);
   const userinfo = await getUserInfo({ userId: params.id });
